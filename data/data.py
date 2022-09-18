@@ -39,8 +39,7 @@ class CrackDataSet(data.Dataset):
         img_data_path = self.img_list[index]
         img = Image.open(img_data_path)
 
-        anno_data_path = self.anno_list[index]
-        label = Image.open(anno_data_path)
+        label = self.anno_list[index]
 
         # img, label = transform(img, label)
         return img, label

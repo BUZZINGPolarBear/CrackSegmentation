@@ -24,6 +24,7 @@ def main():
     #! DataLoader - (img, label)
     current_path = os.getcwd();
     train_dataset = data.CrackDataSet(current_path, "train")
+    print(train_dataset.__getitem__(0))
 
     #! Img(source Img for Training) - 정답지(Label)
 
