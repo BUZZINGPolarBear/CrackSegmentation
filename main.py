@@ -1,5 +1,5 @@
 import argparse
-from data import data
+from data import dataset
 import os
 
 def parse_args():
@@ -23,7 +23,7 @@ def main():
 
     #! DataLoader - (img, label)
     current_path = os.getcwd();
-    train_dataset = data.CrackDataSet(current_path, "train")
+    train_dataset = dataset.CrackDataSet(current_path, "train")
     print(train_dataset.__getitem__(0))
 
     #! Img(source Img for Training) - 정답지(Label)
