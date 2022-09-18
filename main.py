@@ -1,5 +1,6 @@
 import argparse
 from data import dataset
+from models import FCHardNet
 import os
 
 def parse_args():
