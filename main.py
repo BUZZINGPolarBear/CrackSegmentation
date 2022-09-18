@@ -1,5 +1,6 @@
 import argparse
-
+from data import data
+import os
 
 def parse_args():
     parser = argparse.ArgumentParser(description='train, resume, test arguments')
@@ -12,15 +13,18 @@ def parse_args():
     parser.add_argument('--epochs', '-epoch', type=int, default=100)
     parser.add_argument('--workers', '-w', type=int, default= 4*4)
     parser.add_argument('--project_name', '-n', type=str, default="default")
-    
+
     return parser.parse_args()
 def main():
     args = parse_args()
-    
+
     #! 환경을 세팅 (random seed 고정) torch 연산, numpy 연산 random 연산
 
 
     #! DataLoader - (img, label)
+    current_path = os.getcwd();
+    train_dataset = data.CrackDataSet(current_path, "train")
+
     #! Img(source Img for Training) - 정답지(Label)
 
     #! 모델 선언
@@ -29,15 +33,15 @@ def main():
     #! for 문 (몇 에폭까지 ?)
         #! for 문 (1epoch) Dataloader가 가지고 있는 거 다 내놔
 
-        train(model) - gradient 계산 모델 업데이트 학습 o
+        # train(model) - gradient 계산 모델 업데이트 학습 o
 
-        metric = validate(model) - gradient 계산 x - 학습 x
+        # metric = validate(model) - gradient 계산 x - 학습 x
 
-        metric 이 좋아졌네?
-        모델을 저장
+        # metric 이 좋아졌네?
+        # 모델을 저장
 
     #! 모든 에폭이 종료
-    eval()
+    # eval()
     #! 최종 점수 계산 및 최고 점 찍어줘
 
         
