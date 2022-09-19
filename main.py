@@ -1,7 +1,12 @@
 import argparse
+import torch
+import os
+
+from torch import optim
 from data import dataset, data
 # from models import FCHardNet
-import os
+from utils import utils
+from models import DUMMYmodel
 
 def parse_args():
     parser = argparse.ArgumentParser(description='train, resume, test arguments')
@@ -20,21 +25,47 @@ def main():
     args = parse_args()
 
     #! 환경을 세팅 (random seed 고정) torch 연산, numpy 연산 random 연산
+    start_epoch = 0
+    end_epoch = 300
+    learning_rate = 0.01
+    # Sample model parameter
+    W = torch.zeros(1, requires_grad=True)
+    b = torch.zeros(1, requires_grad=True)
+
+    optimizer = optim.SGD([W,b], learning_rate)
+
 
 
     #! DataLoader - (img, label)
     current_path = os.getcwd();
     train_dataset = dataset.CrackDataSet(current_path, "train")
     print("1. DATA Set클래스를 정의. 현재 경로의 data set을 가져오도록 설정했습니다.")
-    print(train_dataset.__getitem__(0))
+    #print(train_dataset.__getitem__(0))
 
-    data_loader = data.initialize_data_loader(16, 2)
-
+    train_data_loader, valid_data_loader = data.initialize_data_loader(16, 2)
 
     #! 모델 선언
     print("ㅠㅠㅠ 쿠다를 써야해서 모델이 안돌아가네요 대략적인 그림만 그려놓겠습니다!!")
 
     #! Img , label
+
+    for epoch in range(start_epoch, end_epoch):
+        DUMMY_JUNI_model = DUMMYmodel.DUMMY_model()
+        utils.adjust_learing_rate(optimizer, epoch, args.learning_rate)
+
+        cost = DUMMY_JUNI_model.train(train_data_loader)
+        if epoch%10 == 0:
+            print("################################")
+            print("################################")
+            print("################################")
+            print(f'Epoch {epoch} Cost: {cost}')
+            print("################################")
+            print("################################")
+            print("################################")
+        # optimizer.zero_grad()
+        # cost.backward()
+        # optimizer.step()
+
     #! for 문 (몇 에폭까지 ?)
         #! for 문 (1epoch) Dataloader가 가지고 있는 거 다 내놔
 
@@ -48,7 +79,6 @@ def main():
     #! 모든 에폭이 종료
     # eval()
     #! 최종 점수 계산 및 최고 점 찍어줘
-
         
     
 

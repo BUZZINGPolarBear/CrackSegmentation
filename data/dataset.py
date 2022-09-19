@@ -47,7 +47,7 @@ class CrackDataSet(data.Dataset):
 
 
     def __len__(self):
-        return len(self.file_list)
+        return len(self.img_list)
 
     def __getitem__(self, index):
         img_data_path = self.img_list[index]
