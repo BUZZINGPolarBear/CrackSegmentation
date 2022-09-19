@@ -1,9 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-import numpy as np
-import collections
-from CatConv2d.catconv2d import CatConv2d
+from models.CatConv2d.catconv2d import CatConv2d
 
 class ConvLayer(nn.Sequential):
     def __init__(self, in_channels, out_channels, kernel=3, stride=1, dropout=0.1):

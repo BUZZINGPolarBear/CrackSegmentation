@@ -1,6 +1,6 @@
 import argparse
-from data import dataset
-from models import FCHardNet
+from data import dataset, data
+# from models import FCHardNet
 import os
 
 def parse_args():
@@ -25,11 +25,14 @@ def main():
     #! DataLoader - (img, label)
     current_path = os.getcwd();
     train_dataset = dataset.CrackDataSet(current_path, "train")
+    print("1. DATA Set클래스를 정의. 현재 경로의 data set을 가져오도록 설정했습니다.")
     print(train_dataset.__getitem__(0))
 
-    #! Img(source Img for Training) - 정답지(Label)
+    data_loader = data.initialize_data_loader(16, 2)
+
 
     #! 모델 선언
+    print("ㅠㅠㅠ 쿠다를 써야해서 모델이 안돌아가네요 대략적인 그림만 그려놓겠습니다!!")
 
     #! Img , label
     #! for 문 (몇 에폭까지 ?)

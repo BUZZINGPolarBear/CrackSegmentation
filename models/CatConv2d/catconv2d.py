@@ -3,7 +3,7 @@ from torch import nn
 from torch.autograd import Function
 import torch
 
-import catconv2d_cuda
+import catconv2d_cuda.cpp
 
 torch.manual_seed(42)
 
