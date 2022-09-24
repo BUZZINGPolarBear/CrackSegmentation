@@ -48,23 +48,24 @@ def main():
     print("ㅠㅠㅠ 쿠다를 써야해서 모델이 안돌아가네요 대략적인 그림만 그려놓겠습니다!!")
 
     #! Img , label
-
+    DUMMY_JUNI_model = DUMMYmodel.DUMMY_model()
     for epoch in range(start_epoch, end_epoch):
-        DUMMY_JUNI_model = DUMMYmodel.DUMMY_model()
         utils.adjust_learing_rate(optimizer, epoch, args.learning_rate)
 
-        cost = DUMMY_JUNI_model.train(train_data_loader)
-        if epoch%10 == 0:
-            print("################################")
-            print("################################")
-            print("################################")
-            print(f'Epoch {epoch} Cost: {cost}')
-            print("################################")
-            print("################################")
-            print("################################")
-        # optimizer.zero_grad()
-        # cost.backward()
-        # optimizer.step()
+        for i, (imgs, labels) in enumerate(train_data_loader):
+
+            cost = DUMMY_JUNI_model(imgs, labels)
+            if epoch%10 == 0:
+                print("################################")
+                print("################################")
+                print("################################")
+                print(f'Epoch {epoch} Cost: {cost}')
+                print("################################")
+                print("################################")
+                print("################################")
+            # optimizer.zero_grad()
+            # cost.backward()
+            # optimizer.step()
 
     #! for 문 (몇 에폭까지 ?)
         #! for 문 (1epoch) Dataloader가 가지고 있는 거 다 내놔
