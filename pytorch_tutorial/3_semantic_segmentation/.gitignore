@@ -4,4 +4,3 @@ weights/
 .ipynb_checkpoints
 *.pyc
 *.pth
-wandb/
